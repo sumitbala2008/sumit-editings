@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="SUMIT.EDITING — Video Editing & Thumbnail Design">
 <title>SUMIT.EDITING — Video Editor & Thumbnail Designer</title>
 
 <style>
@@ -11,379 +11,440 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  scroll-behavior:smooth;
 }
 
-:root{
-  --bg:#0b0b0d;
-  --card:#131316;
-  --border:#2c2c31;
-  --text:#f5f5f5;
-  --muted:#a5a5ad;
-  --accent:#f4c928;
-  --accent2:#ff8a3d;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 80% 10%,rgba(244,201,40,.10),transparent 25%),
-    radial-gradient(circle at 10% 60%,rgba(255,138,61,.07),transparent 25%),
-    var(--bg);
-  color:var(--text);
-  line-height:1.6;
+  background:#0b0b0b;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+:root{
+  --gold:#ffd21c;
+  --orange:#ff7b32;
+  --card:#121212;
+  --border:rgba(255,255,255,.12);
+  --muted:#a7a7a7;
 }
 
-.container{
-  width:min(1100px,92%);
-  margin:auto;
+/* BACKGROUND */
+body:before{
+  content:"";
+  position:fixed;
+  width:450px;
+  height:450px;
+  background:rgba(255,150,0,.08);
+  filter:blur(100px);
+  border-radius:50%;
+  top:-150px;
+  left:-150px;
+  pointer-events:none;
 }
 
-/* NAVBAR */
+body:after{
+  content:"";
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:rgba(255,210,0,.06);
+  filter:blur(100px);
+  border-radius:50%;
+  right:-150px;
+  bottom:-100px;
+  pointer-events:none;
+}
 
-nav{
+/* HEADER */
+header{
   position:sticky;
   top:0;
   z-index:100;
-  backdrop-filter:blur(15px);
-  background:rgba(11,11,13,.82);
-  border-bottom:1px solid var(--border);
-}
-
-.nav-inner{
-  height:72px;
+  height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  padding:0 6%;
+  background:rgba(10,10,10,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
 }
 
 .logo{
-  font-size:22px;
+  font-size:25px;
   font-weight:900;
-  letter-spacing:1px;
+  letter-spacing:-1px;
 }
 
 .logo span{
-  color:var(--accent);
+  color:var(--gold);
 }
 
-.nav-links{
+.nav{
   display:flex;
-  gap:25px;
-  color:#bbb;
-  font-size:14px;
-}
-
-.nav-links a:hover{
-  color:var(--accent);
-}
-
-.nav-btn{
-  border:1px solid var(--accent);
-  padding:10px 18px;
-  border-radius:14px;
-  color:var(--accent);
-  transition:.2s;
-}
-
-.nav-btn:hover{
-  background:var(--accent);
-  color:#111;
-}
-
-/* HERO */
-
-.hero{
-  min-height:calc(100vh - 72px);
-  display:flex;
-  align-items:center;
-  padding:80px 0;
-}
-
-.badge{
-  display:inline-flex;
-  padding:9px 15px;
-  border:1px solid #5c501f;
-  background:rgba(244,201,40,.07);
-  color:#ead45f;
-  border-radius:30px;
-  font-size:14px;
-  margin-bottom:25px;
-}
-
-.hero h1{
-  font-size:clamp(48px,8vw,88px);
-  line-height:.98;
-  max-width:800px;
-  letter-spacing:-4px;
-}
-
-.hero h1 span{
-  color:var(--accent2);
-}
-
-.hero p{
-  max-width:650px;
-  color:var(--muted);
-  font-size:18px;
-  margin:25px 0 30px;
-}
-
-.buttons{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
+  gap:12px;
 }
 
 .btn{
-  display:inline-block;
-  border:1px solid var(--border);
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:14px 22px;
-  border-radius:16px;
+  border:1px solid rgba(255,210,28,.65);
+  border-radius:14px;
+  background:transparent;
+  color:white;
+  text-decoration:none;
   font-weight:700;
-  transition:.2s;
+  cursor:pointer;
+  transition:.25s ease;
+  overflow:hidden;
+}
+
+.btn:before{
+  content:"";
+  position:absolute;
+  width:0;
+  height:100%;
+  left:50%;
+  top:0;
+  background:var(--gold);
+  transition:.3s ease;
+  z-index:-1;
+}
+
+.btn:hover:before{
+  width:100%;
+  left:0;
 }
 
 .btn:hover{
+  color:#111;
   transform:translateY(-3px);
-  border-color:var(--accent);
+  box-shadow:0 10px 30px rgba(255,210,28,.18);
 }
 
 .btn:active{
   transform:scale(.94);
 }
 
-.primary{
-  background:var(--accent);
+.btn.primary{
+  background:var(--gold);
   color:#111;
-  border-color:var(--accent);
+  border-color:var(--gold);
 }
 
-.primary:hover{
-  background:#ffe064;
+/* HERO */
+.hero{
+  min-height:calc(100vh - 76px);
+  display:flex;
+  align-items:center;
+  padding:80px 6%;
+  position:relative;
+}
+
+.hero-content{
+  width:min(800px,100%);
+}
+
+.badge{
+  display:inline-block;
+  padding:12px 18px;
+  border:1px solid rgba(255,210,28,.4);
+  border-radius:40px;
+  color:#f5d951;
+  background:rgba(255,210,28,.05);
+  margin-bottom:28px;
+  font-weight:700;
+}
+
+h1{
+  font-size:clamp(48px,8vw,92px);
+  line-height:.95;
+  letter-spacing:-5px;
+  margin-bottom:28px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#ff7b32,#ffd21c);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:#aaa;
+  font-size:20px;
+  line-height:1.7;
+  max-width:700px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+  flex-wrap:wrap;
 }
 
 /* STATS */
-
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:55px;
+  gap:18px;
+  padding:0 6% 80px;
 }
 
 .stat{
-  padding:22px;
   border:1px solid var(--border);
-  border-radius:20px;
   background:rgba(255,255,255,.025);
+  border-radius:24px;
+  padding:30px;
+  transition:.3s;
+}
+
+.stat:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,210,28,.4);
 }
 
 .stat strong{
   display:block;
-  font-size:28px;
+  font-size:40px;
+  margin-bottom:10px;
   color:white;
 }
 
 .stat span{
-  color:var(--muted);
-  font-size:14px;
+  color:#999;
 }
 
-/* SECTIONS */
-
+/* SECTION */
 section{
-  padding:90px 0;
+  padding:90px 6%;
 }
 
 .section-title{
-  margin-bottom:35px;
+  font-size:clamp(34px,5vw,58px);
+  margin-bottom:15px;
 }
 
-.section-title small{
-  color:var(--accent);
-  font-weight:bold;
+.section-subtitle{
+  color:#999;
+  font-size:18px;
+  margin-bottom:40px;
 }
 
-.section-title h2{
-  font-size:42px;
-  margin-top:5px;
+/* PORTFOLIO */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.project{
+  position:relative;
+  overflow:hidden;
+  border-radius:25px;
+  border:1px solid var(--border);
+  background:#111;
+  min-height:280px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.project:hover{
+  transform:translateY(-8px);
+  border-color:rgba(255,210,28,.5);
+}
+
+.project-bg{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,210,28,.35),transparent 30%),
+    linear-gradient(135deg,#171717,#050505);
+}
+
+.project:nth-child(2) .project-bg{
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,100,40,.4),transparent 30%),
+    linear-gradient(135deg,#18100b,#050505);
+}
+
+.project:nth-child(3) .project-bg{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,210,28,.3),transparent 30%),
+    linear-gradient(135deg,#101010,#1a1400);
+}
+
+.project:nth-child(4) .project-bg{
+  background:
+    radial-gradient(circle at 20% 80%,rgba(255,100,40,.35),transparent 30%),
+    linear-gradient(135deg,#180c08,#050505);
+}
+
+.project-content{
+  position:absolute;
+  inset:auto 0 0;
+  padding:28px;
+  background:linear-gradient(transparent,rgba(0,0,0,.95));
+  padding-top:100px;
+}
+
+.project-content h3{
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.project-content p{
+  color:#aaa;
 }
 
 /* SERVICES */
-
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .service{
+  padding:30px;
+  border-radius:22px;
+  background:#111;
   border:1px solid var(--border);
-  background:var(--card);
-  border-radius:24px;
-  padding:28px;
-  transition:.25s;
+  transition:.3s;
 }
 
 .service:hover{
   transform:translateY(-7px);
-  border-color:#635725;
+  border-color:rgba(255,210,28,.5);
 }
 
 .icon{
-  font-size:35px;
-  margin-bottom:15px;
+  font-size:38px;
+  margin-bottom:20px;
 }
 
 .service h3{
-  margin-bottom:10px;
-}
-
-.service p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* PORTFOLIO */
-
-.portfolio{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-}
-
-.work{
-  overflow:hidden;
-  border:1px solid var(--border);
-  border-radius:24px;
-  background:var(--card);
-}
-
-.work-img{
-  height:270px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-  background:
-    radial-gradient(circle at 50% 50%,#442000,transparent 45%),
-    linear-gradient(135deg,#050505,#1d1208);
-}
-
-.work-img h3{
-  font-size:34px;
-}
-
-.work-img span{
-  color:var(--accent);
-}
-
-.work-info{
-  padding:20px;
-}
-
-.work-info p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* ABOUT */
-
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-}
-
-.about-card{
-  border:1px solid var(--border);
-  background:var(--card);
-  border-radius:25px;
-  padding:30px;
-}
-
-.about-card p{
-  color:var(--muted);
-  margin-top:15px;
-}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
-}
-
-.skill{
-  border:1px solid #393939;
-  border-radius:30px;
-  padding:8px 13px;
-  color:#ddd;
-  font-size:13px;
-}
-
-/* CONTACT */
-
-.contact{
-  text-align:center;
-  border:1px solid var(--border);
-  background:
-    radial-gradient(circle,#332707,transparent 55%),
-    var(--card);
-  border-radius:30px;
-  padding:55px 25px;
-}
-
-.contact h2{
-  font-size:45px;
+  font-size:22px;
   margin-bottom:12px;
 }
 
+.service p{
+  color:#999;
+  line-height:1.6;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:70px 25px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(255,210,28,.12),transparent 45%),
+    #101010;
+}
+
+.contact h2{
+  font-size:clamp(35px,6vw,65px);
+  margin-bottom:18px;
+}
+
 .contact p{
-  color:var(--muted);
+  color:#999;
   max-width:600px;
-  margin:0 auto 25px;
+  margin:auto;
+  line-height:1.7;
+  margin-bottom:30px;
 }
 
 /* FOOTER */
-
 footer{
-  border-top:1px solid var(--border);
-  padding:30px 0;
+  padding:40px 6%;
   text-align:center;
+  border-top:1px solid var(--border);
   color:#777;
-  font-size:13px;
+}
+
+footer strong{
+  color:#ddd;
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:.8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,120px);
+  background:#fff;
+  color:#111;
+  padding:14px 20px;
+  border-radius:14px;
+  font-weight:700;
+  z-index:999;
+  transition:.35s;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
 }
 
 /* MOBILE */
+@media(max-width:800px){
 
-@media(max-width:750px){
+  header{
+    padding:0 5%;
+  }
 
-  .nav-links{
+  .logo{
+    font-size:21px;
+  }
+
+  .nav .btn:first-child{
     display:none;
   }
 
   .hero{
-    padding:65px 0;
+    padding:70px 6%;
+    min-height:auto;
   }
 
-  .hero h1{
-    font-size:52px;
-    letter-spacing:-2px;
+  h1{
+    font-size:55px;
+    letter-spacing:-3px;
   }
 
   .hero p{
-    font-size:16px;
+    font-size:17px;
   }
 
   .stats{
+    grid-template-columns:1fr;
+    padding-bottom:30px;
+  }
+
+  section{
+    padding:70px 6%;
+  }
+
+  .portfolio{
     grid-template-columns:1fr;
   }
 
@@ -391,28 +452,31 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .portfolio{
-    grid-template-columns:1fr;
+  .project{
+    min-height:260px;
   }
 
-  .about{
-    grid-template-columns:1fr;
+  .contact{
+    padding:55px 20px;
+  }
+}
+
+@media(max-width:420px){
+
+  h1{
+    font-size:48px;
   }
 
-  .section-title h2{
-    font-size:34px;
+  .btn{
+    width:100%;
   }
 
-  .contact h2{
-    font-size:34px;
+  .hero-buttons{
+    flex-direction:column;
   }
 
-  .work-img{
-    height:220px;
-  }
-
-  .nav-btn{
-    padding:8px 13px;
+  .nav .btn{
+    width:auto;
   }
 }
 </style>
@@ -420,327 +484,246 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
+<header>
+  <div class="logo">SUMIT<span>.EDITING</span></div>
 
-<nav>
-  <div class="container nav-inner">
-
-    <a href="#" class="logo">
-      SUMIT<span>.EDITING</span>
-    </a>
-
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
-    </div>
-
-    <a href="#contact" class="nav-btn">
-      Hire Me
-    </a>
-
-  </div>
-</nav>
-
-
-<!-- HERO -->
-
-<header class="hero">
-<div class="container">
-
-  <div class="badge">
-    🎬 Video Editor &nbsp;•&nbsp; 🖼️ Thumbnail Designer
-  </div>
-
-  <h1>
-    Make your content
-    <span>stand out.</span>
-  </h1>
-
-  <p>
-    I create engaging short-form video edits, YouTube thumbnails,
-    colour grading and clean creative designs for creators and businesses.
-  </p>
-
-  <div class="buttons">
-    <a href="#contact" class="btn primary">
-      ⚡ Start a Project
-    </a>
-
-    <a href="#portfolio" class="btn">
-      View My Work
-    </a>
-  </div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <strong>3+</strong>
-      <span>Video Samples</span>
-    </div>
-
-    <div class="stat">
-      <strong>2+</strong>
-      <span>Thumbnail Samples</span>
-    </div>
-
-    <div class="stat">
-      <strong>100%</strong>
-      <span>Mobile Friendly</span>
-    </div>
-
-  </div>
-
-</div>
+  <nav class="nav">
+    <a href="#portfolio" class="btn">Portfolio</a>
+    <a href="#contact" class="btn">Hire Me</a>
+  </nav>
 </header>
 
+<main>
 
-<!-- SERVICES -->
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content reveal">
 
-<section id="services">
-<div class="container">
-
-  <div class="section-title">
-    <small>WHAT I DO</small>
-    <h2>My Services</h2>
-  </div>
-
-  <div class="services">
-
-    <div class="service">
-      <div class="icon">🎬</div>
-      <h3>Video Editing</h3>
-      <p>
-        Reels, Shorts and other short-form videos with
-        smooth cuts, transitions, captions and effects.
-      </p>
+    <div class="badge">
+      🎬 Video Editor &nbsp;•&nbsp; 🖼️ Thumbnail Designer
     </div>
 
-    <div class="service">
-      <div class="icon">🖼️</div>
-      <h3>Thumbnail Design</h3>
-      <p>
-        Eye-catching thumbnails designed to make your
-        videos look more professional.
-      </p>
-    </div>
+    <h1>
+      Make your content<br>
+      <span class="gradient">stand out.</span>
+    </h1>
 
-    <div class="service">
-      <div class="icon">🎨</div>
-      <h3>Colour Grading</h3>
-      <p>
-        Cinematic colour correction and grading to give
-        your footage a better visual style.
-      </p>
+    <p>
+      I create engaging short-form video edits, YouTube thumbnails,
+      colour grading and clean creative designs for creators and businesses.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn primary">
+        ⚡ Start a Project
+      </a>
+
+      <a href="#portfolio" class="btn">
+        View My Work
+      </a>
     </div>
 
   </div>
-
-</div>
 </section>
 
 
+<!-- STATS -->
+<div class="stats">
+
+  <div class="stat reveal">
+    <strong>3+</strong>
+    <span>Video Samples</span>
+  </div>
+
+  <div class="stat reveal">
+    <strong>2+</strong>
+    <span>Thumbnail Samples</span>
+  </div>
+
+  <div class="stat reveal">
+    <strong>100%</strong>
+    <span>Mobile Friendly</span>
+  </div>
+
+</div>
+
+
 <!-- PORTFOLIO -->
-
 <section id="portfolio">
-<div class="container">
 
-  <div class="section-title">
-    <small>MY WORK</small>
-    <h2>Selected Projects</h2>
+  <div class="reveal">
+    <h2 class="section-title">My Work</h2>
+    <p class="section-subtitle">
+      Some of my creative editing & design work.
+    </p>
   </div>
 
   <div class="portfolio">
 
-    <div class="work">
-      <div class="work-img">
-        <div>
-          <h3>Dance <span>Cover</span></h3>
-          <p>Thumbnail Design</p>
-        </div>
-      </div>
-
-      <div class="work-info">
-        <h3>Dance Cover Thumbnail</h3>
-        <p>
-          Creative YouTube-style thumbnail with cinematic
-          background and strong typography.
-        </p>
+    <div class="project reveal">
+      <div class="project-bg"></div>
+      <div class="project-content">
+        <h3>🎨 YouTube Thumbnail</h3>
+        <p>Creative thumbnail design</p>
       </div>
     </div>
 
-
-    <div class="work">
-      <div class="work-img">
-        <div>
-          <h3>FACE <span>CARE</span></h3>
-          <p>Advertisement Design</p>
-        </div>
-      </div>
-
-      <div class="work-info">
-        <h3>Business Advertisement</h3>
-        <p>
-          Promotional creative designed for a local
-          beauty and grooming service.
-        </p>
+    <div class="project reveal">
+      <div class="project-bg"></div>
+      <div class="project-content">
+        <h3>🎬 Short Video Edit</h3>
+        <p>Reels & short-form editing</p>
       </div>
     </div>
 
-
-    <div class="work">
-      <div class="work-img">
-        <div>
-          <h3>REELS <span>EDIT</span></h3>
-          <p>Short-form Video</p>
-        </div>
-      </div>
-
-      <div class="work-info">
-        <h3>Instagram Reel Editing</h3>
-        <p>
-          Fast-paced edits, captions, transitions and
-          social-media friendly composition.
-        </p>
+    <div class="project reveal">
+      <div class="project-bg"></div>
+      <div class="project-content">
+        <h3>✨ Colour Grading</h3>
+        <p>Cinematic colour correction</p>
       </div>
     </div>
 
-
-    <div class="work">
-      <div class="work-img">
-        <div>
-          <h3>CINEMATIC <span>LOOK</span></h3>
-          <p>Colour Grading</p>
-        </div>
-      </div>
-
-      <div class="work-info">
-        <h3>Cinematic Colour Grade</h3>
-        <p>
-          Moody and cinematic colour treatment for
-          short-form content.
-        </p>
+    <div class="project reveal">
+      <div class="project-bg"></div>
+      <div class="project-content">
+        <h3>🔥 Social Media Design</h3>
+        <p>Creative content for social media</p>
       </div>
     </div>
 
   </div>
-
-</div>
 </section>
 
 
-<!-- ABOUT -->
+<!-- SERVICES -->
+<section>
 
-<section id="about">
-<div class="container">
-
-  <div class="section-title">
-    <small>ABOUT ME</small>
-    <h2>Creative. Simple. Effective.</h2>
+  <div class="reveal">
+    <h2 class="section-title">What I Do</h2>
+    <p class="section-subtitle">
+      Simple, clean and engaging creative services.
+    </p>
   </div>
 
-  <div class="about">
+  <div class="services">
 
-    <div class="about-card">
-      <h3>Why work with me?</h3>
-
+    <div class="service reveal">
+      <div class="icon">🎬</div>
+      <h3>Video Editing</h3>
       <p>
-        I focus on clean, modern and engaging designs that
-        help creators present their content professionally.
-      </p>
-
-      <p>
-        Whether you need a Reel edit, YouTube thumbnail
-        or colour grading, I can help turn your idea into
-        polished content.
+        Reels, Shorts and social media videos with smooth cuts,
+        transitions and engaging pacing.
       </p>
     </div>
 
-    <div class="about-card">
+    <div class="service reveal">
+      <div class="icon">🖼️</div>
+      <h3>Thumbnail Design</h3>
+      <p>
+        Eye-catching thumbnails designed to make your content
+        look professional.
+      </p>
+    </div>
 
-      <h3>Skills</h3>
-
-      <div class="skills">
-        <span class="skill">Video Editing</span>
-        <span class="skill">Reels</span>
-        <span class="skill">YouTube Shorts</span>
-        <span class="skill">Thumbnail Design</span>
-        <span class="skill">Colour Grading</span>
-        <span class="skill">Creative Design</span>
-        <span class="skill">Mobile Editing</span>
-      </div>
-
+    <div class="service reveal">
+      <div class="icon">🎨</div>
+      <h3>Colour Grading</h3>
+      <p>
+        Cinematic colour correction and grading to give your
+        videos a better visual look.
+      </p>
     </div>
 
   </div>
-
-</div>
 </section>
 
 
 <!-- CONTACT -->
-
 <section id="contact">
-<div class="container">
 
-  <div class="contact">
+  <div class="contact reveal">
 
-    <h2>Have a project?</h2>
+    <h2>Let's work together.</h2>
 
     <p>
-      Tell me what you need and let's create something
-      that makes your content stand out.
+      Have a video, thumbnail or creative project?
+      Send me a message and let's discuss your project.
     </p>
 
-    <div class="buttons" style="justify-content:center">
-
-      <!-- Replace these links with your own contact links -->
-
-      <a
-        href="mailto:your-email@example.com"
-        class="btn primary"
-      >
-        📩 Email Me
-      </a>
-
-      <a
-        href="https://instagram.com/"
-        target="_blank"
-        class="btn"
-      >
-        📸 Instagram
-      </a>
-
-    </div>
+    <!-- নিজের WhatsApp number এখানে বসাবে -->
+    <a
+      href="https://wa.me/91XXXXXXXXXX"
+      class="btn primary"
+      target="_blank"
+      onclick="showToast()"
+    >
+      💬 Hire Me on WhatsApp
+    </a>
 
   </div>
 
-</div>
 </section>
+
+</main>
 
 
 <footer>
-  © 2026 SUMIT.EDITING • Video Editor & Thumbnail Designer
+  © 2026 <strong>SUMIT.EDITING</strong> — Video Editor & Thumbnail Designer
 </footer>
 
 
-<script>
-/* Smooth button click feedback */
+<div class="toast" id="toast">
+  Opening WhatsApp...
+</div>
 
-document.querySelectorAll(".btn,.nav-btn").forEach(function(button){
+
+<script>
+
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{
+  threshold:.12
+});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
+});
+
+
+/* TOAST */
+function showToast(){
+  const toast=document.getElementById("toast");
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },2000);
+}
+
+
+/* BUTTON CLICK ANIMATION */
+document.querySelectorAll(".btn").forEach(button=>{
 
   button.addEventListener("click",function(){
 
-    button.style.transform="scale(.92)";
+    this.style.transform="scale(.93)";
 
-    setTimeout(function(){
-      button.style.transform="";
+    setTimeout(()=>{
+      this.style.transform="";
     },150);
 
   });
 
 });
+
 </script>
 
 </body>
-</html>
+      </html>
